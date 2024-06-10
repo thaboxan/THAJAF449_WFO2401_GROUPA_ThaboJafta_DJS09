@@ -2,11 +2,12 @@
 const propertyContainer = document.querySelector('.properties')
 const footer = document.querySelector('.footer')
 
-import { showReviewTotal, populateUser } from '../utils'
+import { showReviewTotal, populateUser, } from '../utils'
 import { Permissions, LoyaltyUser } from './enums'
+import { Price, Country } from './types'
 
-let isOpen: boolean
 
+let isLoggedIn: boolean
 
 // Reviews
 const reviews : { 
@@ -45,16 +46,17 @@ const you = {
     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
 }
 
+
 // Array of Properties
 const properties : {
     image: string;
     title: string;
-    price: number;
+    price: Price;
     location: {
         firstLine: string;
         city: string;
         code: number;
-        country: string;
+        country: Country;
     };
     contact: [number, string];
     isAvailable: boolean;
@@ -75,7 +77,7 @@ const properties : {
     {
         image: 'images/poland-property.jpg',
         title: 'Polish Cottage',
-        price: 34,
+        price: 30,
         location: {
             firstLine: 'no 23',
             city: 'Gdansk',
@@ -88,7 +90,7 @@ const properties : {
     {
         image: 'images/london-property.jpg',
         title: 'London Flat',
-        price: 23,
+        price: 25,
         location: {
             firstLine: 'flat 15',
             city: 'London',
@@ -104,6 +106,12 @@ const properties : {
 showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
 
 populateUser(you.isReturning, you.firstName)
+
+let authorityStatus : any
+
+isLoggedIn = true;
+
+
 
 //Add the properties
 for (let i = 0; i < properties.length; i++) {
@@ -122,5 +130,7 @@ for (let i = 0; i < properties.length; i++) {
 let currentLocation: [string, string, number] = ['White River', '15:10', 23]
 //@ts-ignore
 footer.innerHTML = `${currentLocation[0]}  ${currentLocation[1]}  ${currentLocation[2]}°`
+
+
 
 
