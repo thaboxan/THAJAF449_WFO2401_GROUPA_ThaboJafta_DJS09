@@ -4,12 +4,15 @@ const userNameDisplay = document.querySelector('#user')
 
 export function showReviewTotal(value: number, reviewer: string, isLoyalty: boolean) {
     const iconDisplay = isLoyalty ? '⭐' : ''
+    // @ts-ignore
     reviewTotalDisplay.innerHTML = 'review total ' + value.toString() + '| last reviewed by ' + reviewer + ' ' + iconDisplay
 }
 
 export function populateUser(isReturning : boolean, userName: string ) {
     if (isReturning){
+        // @ts-ignore
         returningUserDisplay.innerHTML = 'back'
     }
+    // @ts-ignore
     userNameDisplay.innerHTML = userName
 }
