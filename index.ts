@@ -39,19 +39,23 @@ showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
 
 
 
-
-const you = {
-    userName: 'Bobby',
-    isReturning: true,
+const you: {
+    firstName : string;
+    lastName: string;
+    isReturning: boolean;
+    age: number;
+} = {
+   firstName: 'Bobby',
+   lastName: 'Brown',
+   isReturning: true,
+   age: 35
 }
-
 
 function populateUser(isReturning, userName ) {
     if (isReturning){
-        // @ts-ignore: Object is possibly 'null'.
         returningUserDisplay.innerHTML = 'back'
     }
-    // @ts-ignore: Object is possibly 'null'.
+  
     userNameDisplay.innerHTML = userName
 }
 
