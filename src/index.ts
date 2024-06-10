@@ -4,6 +4,7 @@
 // properties array
 
 const propertyContainer = document.querySelector('.properties')
+const footer = document.querySelector('.footer')
 
 import { showReviewTotal, populateUser } from '../utils'
 //@ts-ignore
@@ -122,5 +123,10 @@ for (let i = 0; i < properties.length; i++) {
     //@ts-ignore
     propertyContainer.appendChild(card)
 }
+
+
+
+let currentLocation: [string, string, number] = ['White River', '15:10', 23]
+footer.innerHTML = `${currentLocation[0]}  ${currentLocation[1]}  ${currentLocation[2]} °`
 
 
