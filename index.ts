@@ -1,4 +1,5 @@
 
+
 // Number Types mini-challenge 10 10.2
 // Write a function that will only accept numbers and attend to 
 // all TypeScript weakness flags.
@@ -40,12 +41,12 @@ showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
 
 
 const you = {
-    userName: {firstName: 'Bobby', lastName: 'Brown'},
-    isReturning: 'yes',
+    userName: 'Bobby',
+    isReturning: true,
 }
 
 
-function populateUser(isReturning:boolean, userName:string ) {
+function populateUser(isReturning, userName ) {
     if (isReturning){
         // @ts-ignore: Object is possibly 'null'.
         returningUserDisplay.innerHTML = 'back'
