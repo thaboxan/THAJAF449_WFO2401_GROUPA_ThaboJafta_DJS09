@@ -1,4 +1,5 @@
 
+import { showReviewTotal, populateUser } from './utils'
 
 // Number Types mini-challenge 10 10.2
 // Write a function that will only accept numbers and attend to 
@@ -33,16 +34,6 @@ const reviews : {
 ]
 
 
-function showReviewTotal(value: number, reviewer: string, isLoyalty: boolean) {
-    const iconDisplay = isLoyalty ? '⭐' : ''
-    // @ts-ignore: Object is possibly 'null'.
-    reviewTotalDisplay.innerHTML = 'review total ' + value.toString() + '| last reviewed by ' + reviewer + ' ' + iconDisplay
-}
-
-showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
-
-
-
 const you: {
     firstName : string;
     lastName: string;
@@ -57,14 +48,8 @@ const you: {
    stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
 }
 
-function populateUser(isReturning: boolean, userName: string ) {
-    if (isReturning){
-         // @ts-ignore: Object is possibly 'null'.
-        returningUserDisplay.innerHTML = 'back'
-    }
-   // @ts-ignore: Object is possibly 'null'.
-    userNameDisplay.innerHTML = userName
-}
 
-populateUser(you.isReturning, you.userName)
 
+showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
+
+populateUser(you.isReturning, you.firstName)
