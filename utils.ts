@@ -8,7 +8,7 @@ export function showReviewTotal(value: number, reviewer: string, isLoyalty: bool
 }
 
 export function populateUser(isReturning : boolean, userName: string ) {
-    if (isReturning == true){
+    if (isReturning){
         returningUserDisplay.innerHTML = 'back'
     }
     userNameDisplay.innerHTML = userName
