@@ -44,18 +44,21 @@ const you: {
     lastName: string;
     isReturning: boolean;
     age: number;
+    stayedAt: string[];
 } = {
    firstName: 'Bobby',
    lastName: 'Brown',
    isReturning: true,
-   age: 35
+   age: 35,
+   stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
 }
 
-function populateUser(isReturning, userName ) {
+function populateUser(isReturning: boolean, userName: string ) {
     if (isReturning){
+         // @ts-ignore: Object is possibly 'null'.
         returningUserDisplay.innerHTML = 'back'
     }
-  
+   // @ts-ignore: Object is possibly 'null'.
     userNameDisplay.innerHTML = userName
 }
 
