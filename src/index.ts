@@ -2,7 +2,7 @@
 const propertyContainer = document.querySelector('.properties')
 const footer = document.querySelector('.footer')
 
-import { showReviewTotal, populateUser, } from '../utils'
+import { showReviewTotal, populateUser, showDetails, getTopTwoReviews } from '../utils'
 import { Permissions, LoyaltyUser } from './enums'
 import { Price, Country } from './types'
 
@@ -51,12 +51,12 @@ const you = {
 const properties : {
     image: string;
     title: string;
-    price: Price;
+    price: number;
     location: {
         firstLine: string;
         city: string;
         code: number;
-        country: Country;
+        country: string;
     };
     contact: [number, string];
     isAvailable: boolean;
@@ -107,9 +107,9 @@ showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
 
 populateUser(you.isReturning, you.firstName)
 
-let authorityStatus : any
 
-isLoggedIn = true;
+
+
 
 
 
@@ -121,10 +121,28 @@ for (let i = 0; i < properties.length; i++) {
     const image = document.createElement('img')
     image.setAttribute('src', properties[i].image)
     card.appendChild(image)
+    
+    showDetails(you.permissions, card, properties[i].price)
     //@ts-ignore
     propertyContainer.appendChild(card)
 }
+    
+let count = 0
+function addReviews(array : { name: string; stars: number; loyaltyUser: LoyaltyUser; date: string; }[]) : void {
+    if (!count ) {
+        count++
+        const topTwo = getTopTwoReviews(array)
+        for (let i = 0; i < topTwo.length; i++) {
+            const card = document.createElement('div')
+            card.classList.add('review-card')
+            card.innerHTML = topTwo[i].stars + ' stars from ' + topTwo[i].name
+            reviewContainer.appendChild(card)
+        }
+        container.removeChild(button) 
+    }
+}
 
+button.addEventListener('click', () => addReviews(reviews))
 
 
 let currentLocation: [string, string, number] = ['White River', '15:10', 23]
