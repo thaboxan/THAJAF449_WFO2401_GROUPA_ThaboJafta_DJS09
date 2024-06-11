@@ -1,21 +1,20 @@
 
-const propertyContainer = document.querySelector('.properties')
-const footer = document.querySelector('.footer')
+
+
 
 import { showReviewTotal, populateUser, showDetails, getTopTwoReviews } from '../utils'
+import Review from './interfaces'
 import { Permissions, LoyaltyUser } from './enums'
 import { Price, Country } from './types'
-
+const propertyContainer = document.querySelector('.properties')
+const reviewContainer = document.querySelector('.reviews')
+const container = document.querySelector('.container')
 
 let isLoggedIn: boolean
 
 // Reviews
-const reviews : { 
-    name: string; 
-    stars: number; 
-    loyaltyUser: LoyaltyUser; 
-    date: string
-    }[] = [
+// Reviews
+const reviews: Review[] = [
     {
         name: 'Sheia',
         stars: 5,
@@ -32,9 +31,10 @@ const reviews : {
         name: 'Omar',
         stars: 4,
         loyaltyUser: LoyaltyUser.SILVER_USER,
-        date: '27-03-2021'
+        date: '27-03-2021',
     },
 ]
+
 
 // User
 const you = {
@@ -126,7 +126,8 @@ for (let i = 0; i < properties.length; i++) {
     //@ts-ignore
     propertyContainer.appendChild(card)
 }
-    
+
+const button = document.querySelector('button')    
 let count = 0
 function addReviews(array : { name: string; stars: number; loyaltyUser: LoyaltyUser; date: string; }[]) : void {
     if (!count ) {
@@ -144,11 +145,6 @@ function addReviews(array : { name: string; stars: number; loyaltyUser: LoyaltyU
 
 button.addEventListener('click', () => addReviews(reviews))
 
-
-let currentLocation: [string, string, number] = ['White River', '15:10', 23]
-//@ts-ignore
-footer.innerHTML = `${currentLocation[0]}  ${currentLocation[1]}  ${currentLocation[2]}°`
-
-
-
-
+const footer = document.querySelector('.footer');
+let currentLocation: [string, string, number] = ['White River', '15:10', 23];
+(footer.innerHTML as string) = `${currentLocation[0]}  ${currentLocation[1]}  ${currentLocation[2]}°`;
